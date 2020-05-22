@@ -16,9 +16,7 @@ import com.example.receptar.viewmodel.UserViewModel;
 
 import java.util.List;
 
-public class UserActivity extends AppCompatActivity {
-
-    private UserViewModel userViewModel;
+public class UserActivity extends BasicActivity<UserViewModel> {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,8 +30,8 @@ public class UserActivity extends AppCompatActivity {
         final UserAdapter adapter = new UserAdapter();
         recyclerView.setAdapter(adapter);
 
-        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
-        userViewModel.getUsers().observe(this, new Observer<List<User>>() {
+        viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        viewModel.getUsers().observe(this, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
                 adapter.setUsers(users);

@@ -16,9 +16,9 @@ import lombok.NonNull;
 @Database(entities = User.class, version = 1)
 public abstract class UserDatabase extends RoomDatabase {
 
-    private static UserDatabase instance;
-
     public abstract UserDao userDao();
+
+    private static UserDatabase instance;
 
     public static synchronized UserDatabase getInstance(Context context) {
         if (instance == null) {
@@ -35,6 +35,8 @@ public abstract class UserDatabase extends RoomDatabase {
             new PopulateDbAsyncTask(instance).execute();
         }
     };
+    ;
+
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private UserDao userDao;

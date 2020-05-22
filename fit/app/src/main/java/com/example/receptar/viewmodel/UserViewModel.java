@@ -13,31 +13,14 @@ import java.util.List;
 
 import lombok.Getter;
 
-public class UserViewModel extends AndroidViewModel {
-
-    // TODO VYHODIT
-
-    private UserRepository repository;
+public class UserViewModel extends BasicViewModel<User, UserRepository> {
 
     @Getter
     private LiveData<List<User>> users;
 
     public UserViewModel(@NonNull Application application) {
-        super(application);
-        repository = new UserRepository(application);
+        super(application, new UserRepository(application));
         users = repository.getUsers();
-    }
-
-    public void insert(User user) {
-        repository.insert(user);
-    }
-
-    public void update(User user) {
-        repository.update(user);
-    }
-
-    public void delete(User user) {
-        repository.delete(user);
     }
 
 }
