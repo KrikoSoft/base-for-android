@@ -7,6 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.receptar.repository.BasicRepository;
 
+/**
+ * @param <T>  objects in repository
+ * @param <BR> repository of objects
+ */
 public class BasicViewModel<T, BR extends BasicRepository<T>> extends AndroidViewModel {
 
     BR repository;

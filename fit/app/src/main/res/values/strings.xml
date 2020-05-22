@@ -1,15 +1,7 @@
 <resources>
     <string name="app_name">Receptár</string>
-    <string name="name">Meno</string>
-    <string name="surname">Priezvisko</string>
-    <string name="age">Vek</string>
-    <string name="height">Výška</string>
-    <string name="weight">Váha</string>
-    <string name="actual_weight">Aktuálna váha</string>
-    <string name="sex">Pohlavie</string>
-    <string name="work">Práca</string>
-    <string name="note">Poznámka</string>
-    <string name="bve">BVE</string>
-    <string name="vefa">VEFA</string>
-    <string name="add">Pridať</string>
+    <string name="login">Prihlásiť</string>
+    <string name="user_name">Prihlasovacie meno</string>
+    <string name="password">Heslo</string>
+    <string name="register">Registrovať</string>
 </resources>

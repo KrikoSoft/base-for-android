@@ -1,6 +1,5 @@
 package com.example.receptar.repository;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.os.AsyncTask;
 
@@ -17,57 +16,81 @@ public class BasicRepository<T> {
     }
 
     @SuppressWarnings("unchecked")
-    public void insert(T object) {
-        new InsertObjectAsyncTask(basicDao).execute(object);
+    public void insert(final T object) {
+        new HandleObjectAsyncTask<T>(new Runnable() {
+            @Override
+            public void run() {
+                basicDao.insert(object);
+            }
+        }).execute();
     }
 
     @SuppressWarnings("unchecked")
-    public void update(T object) {
-        new UpdateObjectAsyncTask(basicDao).execute(object);
+    public void update(final T object) {
+        new HandleObjectAsyncTask<T>(new Runnable() {
+            @Override
+            public void run() {
+                basicDao.update(object);
+            }
+        }).execute();
     }
 
     @SuppressWarnings("unchecked")
-    public void delete(T object) {
-        new DeleteObjectAsyncTask(basicDao).execute(object);
+    public void delete(final T object) {
+        new HandleObjectAsyncTask<T>(new Runnable() {
+            @Override
+            public void run() {
+                basicDao.delete(object);
+            }
+        }).execute();
     }
 
-    @SuppressLint("StaticFieldLeak")
     @AllArgsConstructor
-    private class InsertObjectAsyncTask extends AsyncTask<T, Void, Void> {
-        private BasicDao<T> basicDao;
+    protected static class HandleObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
+        private Runnable task;
 
         @SafeVarargs
         @Override
-        protected final Void doInBackground(T... objects) {
-            basicDao.insert(objects[0]);
+        protected final Void doInBackground(T... ts) {
+            task.run();
             return null;
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    @AllArgsConstructor
-    private class UpdateObjectAsyncTask extends AsyncTask<T, Void, Void> {
-        private BasicDao<T> basicDao;
-
-        @SafeVarargs
-        @Override
-        protected final Void doInBackground(T... objects) {
-            basicDao.update(objects[0]);
-            return null;
-        }
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    @AllArgsConstructor
-    private class DeleteObjectAsyncTask extends AsyncTask<T, Void, Void> {
-        private BasicDao<T> userDao;
-
-        @SafeVarargs
-        @Override
-        protected final Void doInBackground(T... objects) {
-            userDao.delete(objects[0]);
-            return null;
-        }
-    }
+//    @AllArgsConstructor
+//    private static class InsertObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
+//        private BasicDao<T> basicDao;
+//
+//        @SafeVarargs
+//        @Override
+//        protected final Void doInBackground(T... objects) {
+//            basicDao.insert(objects[0]);
+//            return null;
+//        }
+//    }
+//
+//    @AllArgsConstructor
+//    private static class UpdateObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
+//        private BasicDao<T> basicDao;
+//
+//        @SafeVarargs
+//        @Override
+//        protected final Void doInBackground(T... objects) {
+//            basicDao.update(objects[0]);
+//            return null;
+//        }
+//    }
+//
+//    @AllArgsConstructor
+//    private static class DeleteObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
+//        private BasicDao<T> userDao;
+//
+//        @SafeVarargs
+//        @Override
+//        protected final Void doInBackground(T... objects) {
+//            userDao.delete(objects[0]);
+//            return null;
+//        }
+//    }
 
 }

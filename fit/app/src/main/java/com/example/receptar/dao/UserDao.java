@@ -14,4 +14,10 @@ public interface UserDao extends BasicDao<User> {
     @Query("SELECT * FROM users ORDER BY id")
     LiveData<List<User>> getUsers();
 
+    @Query("SELECT * FROM users WHERE userName = :userName AND password = :encryptedPassword")
+    User login(String userName, String encryptedPassword);
+
+    @Query("SELECT count(*) FROM users WHERE userName = :userName")
+    int userCount(String userName);
+
 }

@@ -35,8 +35,6 @@ public abstract class UserDatabase extends RoomDatabase {
             new PopulateDbAsyncTask(instance).execute();
         }
     };
-    ;
-
 
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private UserDao userDao;

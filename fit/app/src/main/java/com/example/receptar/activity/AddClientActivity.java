@@ -34,18 +34,6 @@ public class AddClientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_client);
 
-        editTextSurname = findViewById(R.id.edit_text_surname);
-        editTextName = findViewById(R.id.edit_text_name);
-        editTextAge = findViewById(R.id.edit_text_age);
-        editTextHeight = findViewById(R.id.edit_text_height);
-        editTextWeight = findViewById(R.id.edit_text_weight);
-        editTextActualWeight = findViewById(R.id.edit_text_actual_weight);
-        editTextSex = findViewById(R.id.edit_text_sex);
-        editTextWorkId = findViewById(R.id.edit_text_work_id);
-        editTextNote = findViewById(R.id.edit_text_note);
-        editTextBve = findViewById(R.id.edit_text_bve);
-        editTextVefa = findViewById(R.id.edit_text_vefa);
-
         Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.icon_close);
         setTitle("Pridať klienta");
     }
@@ -88,11 +76,12 @@ public class AddClientActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.save_client) {
-            saveClient();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+//        if (item.getItemId() == R.id.save_client) {
+//            saveClient();
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+        return true;
     }
 
 

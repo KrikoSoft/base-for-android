@@ -3,14 +3,13 @@ package com.example.receptar.activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.receptar.adapter.UserAdapter;
 import com.example.receptar.R;
+import com.example.receptar.adapter.UserAdapter;
 import com.example.receptar.java.User;
 import com.example.receptar.viewmodel.UserViewModel;
 
