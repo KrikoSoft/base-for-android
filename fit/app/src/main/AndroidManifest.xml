@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fitappmobile">
+    package="com.example.receptar">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="com.example.receptar.activity.AddClientActivity" />
+        <activity android:name="com.example.receptar.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.ClientsActivity"
+            android:name="com.example.receptar.activity.UserActivity"
             android:configChanges="orientation"
             android:label="Klienti"
             android:launchMode="singleTask"
-            android:parentActivityName=".activity.MainActivity"
+            android:parentActivityName="com.example.receptar.activity.MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 

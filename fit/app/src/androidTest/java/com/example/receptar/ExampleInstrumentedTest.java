@@ -1,4 +1,4 @@
-package com.example.fitappmobile;
+package com.example.receptar;
 
 import android.content.Context;
 

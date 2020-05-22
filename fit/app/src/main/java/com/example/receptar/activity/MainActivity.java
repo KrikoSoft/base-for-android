@@ -1,4 +1,4 @@
-package com.example.fitappmobile.activity;
+package com.example.receptar.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fitappmobile.R;
+import com.example.receptar.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Context context = getApplicationContext();
-        context.startActivity(new Intent(context, ClientsActivity.class));
+        context.startActivity(new Intent(context, UserActivity.class));
     }
 }
