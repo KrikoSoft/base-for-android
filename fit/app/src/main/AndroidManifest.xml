@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.receptar.activity.UserActivity"
+            android:name="com.example.receptar.activity.UserRecipesActivity"
             android:configChanges="orientation"
-            android:label="Klienti"
+            android:label="Moje Recepty"
             android:launchMode="singleTask"
             android:parentActivityName="com.example.receptar.activity.MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />

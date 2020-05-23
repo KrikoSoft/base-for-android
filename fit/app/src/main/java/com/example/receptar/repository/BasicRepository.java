@@ -11,7 +11,7 @@ public class BasicRepository<T> {
 
     BasicDao<T> basicDao;
 
-    BasicRepository(Application application, BasicDao<T> basicDao) {
+    BasicRepository(BasicDao<T> basicDao) {
         this.basicDao = basicDao;
     }
 

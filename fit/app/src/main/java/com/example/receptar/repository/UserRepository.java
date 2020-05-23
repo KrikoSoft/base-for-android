@@ -2,27 +2,18 @@ package com.example.receptar.repository;
 
 import android.app.Application;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.receptar.dao.UserDao;
-import com.example.receptar.database.UserDatabase;
+import com.example.receptar.database.Database;
 import com.example.receptar.java.User;
 import com.example.receptar.utils.DbUtils;
 
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import lombok.Getter;
-
 public class UserRepository extends BasicRepository<User> {
 
-    @Getter
-    private LiveData<List<User>> users;
-
     public UserRepository(Application application) {
-        super(application, UserDatabase.getInstance(application).userDao());
-        users = ((UserDao) basicDao).getUsers();
+        super(Database.getInstance(application).userDao());
     }
 
     public User login(final String name, final String password) {

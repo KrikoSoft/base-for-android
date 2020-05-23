@@ -9,4 +9,8 @@ public class LoginData {
     @Getter
     private static User loggedUser;
 
+    public static int getLoggedUserId() {
+        return loggedUser.getId();
+    }
+
 }

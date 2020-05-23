@@ -20,4 +20,5 @@ public class MainViewModel extends BasicViewModel<User, UserRepository> {
     public User register(String name, String password) {
         return repository.register(name, password);
     }
+
 }

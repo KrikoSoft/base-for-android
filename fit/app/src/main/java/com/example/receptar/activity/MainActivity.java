@@ -49,7 +49,8 @@ public class MainActivity extends BasicActivity<MainViewModel> {
         } else {
             Toast.makeText(getApplicationContext(), "Prihlásenie úspešné", Toast.LENGTH_LONG).show();
             LoginData.setLoggedUser(user);
-            startActivity(new Intent(getApplicationContext(), UserActivity.class));
+
+            startActivity(new Intent(getApplicationContext(), UserRecipesActivity.class));
         }
     }
 
@@ -60,7 +61,7 @@ public class MainActivity extends BasicActivity<MainViewModel> {
         } else {
             Toast.makeText(getApplicationContext(), "Registrácia úspešná!", Toast.LENGTH_LONG).show();
             LoginData.setLoggedUser(user);
-            startActivity(new Intent(getApplicationContext(), UserActivity.class));
+            startActivity(new Intent(getApplicationContext(), UserRecipesActivity.class));
         }
     }
 }

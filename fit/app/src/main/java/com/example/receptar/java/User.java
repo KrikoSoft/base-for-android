@@ -8,9 +8,9 @@ import com.example.receptar.utils.DbUtils;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity(tableName = "users")
 @Getter
 @Setter
+@Entity(tableName = "users")
 public class User {
 
     @PrimaryKey(autoGenerate = true)

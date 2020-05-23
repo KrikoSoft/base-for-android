@@ -6,11 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/users_recycler_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/user_item" />
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/edit_text_recipe_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/recipe_name"
+            android:inputType="text" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipes_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/edit_text_recipe_filter"
+            tools:listitem="@layout/recipe_item" />
+
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_add_client"
@@ -19,5 +34,4 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="32dp"
         android:src="@drawable/icon_add" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
