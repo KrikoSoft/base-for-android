@@ -9,20 +9,28 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.receptar.R;
-import com.example.receptar.java.LoginData;
 import com.example.receptar.java.Recipe;
+import com.example.receptar.viewmodel.RecipeViewModel;
 
 import java.util.Objects;
 
-public class AddRecipeActivity extends AppCompatActivity {
+import static com.example.receptar.activity.RecipeActivity.EXTRA_REQUEST_CODE;
+import static com.example.receptar.activity.RecipeActivity.REQUEST_EDIT_RECIPE;
+import static com.example.receptar.adapter.RecipeAdapter.EXTRA_RECIPE_ID;
+
+public class EditRecipeActivity extends BasicActivity<RecipeViewModel> {
 
     public static final String EXTRA_TITLE = "EXTRA_TITLE";
     public static final String EXTRA_STEPS = "EXTRA_STEPS";
 
     private EditText editTextTitle;
     private EditText editTextRecipeSteps;
+
+    private boolean editing = false;
+    private int recipeId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +40,17 @@ public class AddRecipeActivity extends AppCompatActivity {
         editTextTitle = findViewById(R.id.edit_text_recipe_title);
         editTextRecipeSteps = findViewById(R.id.edit_text_recipe_steps);
 
-        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.icon_close);
+        editing = false;
+        viewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
+
+
+        if (getIntent().getIntExtra(EXTRA_REQUEST_CODE, 0) == REQUEST_EDIT_RECIPE) {
+            editing = true;
+            recipeId = getIntent().getIntExtra(EXTRA_RECIPE_ID, 0);
+            Recipe recipe = viewModel.getRecipe(recipeId);
+            editTextTitle.setText(recipe.getTitle());
+            editTextRecipeSteps.setText(recipe.getText());
+        }
     }
 
     private void saveRecipe() {
@@ -49,6 +67,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putExtra(EXTRA_TITLE, recipeTitle);
         intent.putExtra(EXTRA_STEPS, recipeSteps);
+        intent.putExtra(EXTRA_RECIPE_ID, recipeId);
 
         setResult(RESULT_OK, intent);
         finish();
@@ -57,18 +76,17 @@ public class AddRecipeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.add_client_menu, menu);
+        menuInflater.inflate(R.menu.edit_recipe_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.save_client) {
+        if (item.getItemId() == R.id.save_recipe) {
             saveRecipe();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

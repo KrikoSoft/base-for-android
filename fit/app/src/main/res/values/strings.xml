@@ -8,4 +8,7 @@
     <string name="save">Uložiť</string>
     <string name="recipe_title">Názov receptu</string>
     <string name="steps">Postup</string>
+    <string name="recipe_text">Postup:</string>
+    <string name="edit">Upraviť</string>
+    <string name="delete">Odstrániť</string>
 </resources>

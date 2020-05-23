@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/save_client"
+        android:id="@+id/save_recipe"
         android:icon="@drawable/icon_save"
         android:title="@string/save"
         app:showAsAction="ifRoom" />

@@ -66,7 +66,7 @@ public class UserRecipesActivity extends BasicActivity<UserRecipesViewModel> {
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(getApplicationContext(), AddRecipeActivity.class), REQUEST_ADD_RECIPE);
+                startActivityForResult(new Intent(getApplicationContext(), EditRecipeActivity.class), REQUEST_ADD_RECIPE);
             }
         });
 
@@ -78,8 +78,8 @@ public class UserRecipesActivity extends BasicActivity<UserRecipesViewModel> {
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == REQUEST_ADD_RECIPE && resultCode == RESULT_OK) {
-            String title = intent.getStringExtra(AddRecipeActivity.EXTRA_TITLE);
-            String steps = intent.getStringExtra(AddRecipeActivity.EXTRA_STEPS);
+            String title = intent.getStringExtra(EditRecipeActivity.EXTRA_TITLE);
+            String steps = intent.getStringExtra(EditRecipeActivity.EXTRA_STEPS);
             viewModel.insert(new Recipe(LoginData.getLoggedUserId(), title, steps));
             filterRecipes();
             Toast.makeText(getApplicationContext(), "Recept uložený!", Toast.LENGTH_SHORT).show();

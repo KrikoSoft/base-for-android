@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.receptar.activity.AddRecipeActivity"
+            android:name="com.example.receptar.activity.EditRecipeActivity"
             android:label="Pridať Recept"
             android:launchMode="singleTask"
             android:parentActivityName="com.example.receptar.activity.UserRecipesActivity" />
