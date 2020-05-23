@@ -15,7 +15,7 @@ public class BasicViewModel<T, BR extends BasicRepository<T>> extends AndroidVie
 
     BR repository;
 
-    BasicViewModel(@NonNull Application application, BR repository) {
+    protected BasicViewModel(@NonNull Application application, BR repository) {
         super(application);
         this.repository = repository;
     }

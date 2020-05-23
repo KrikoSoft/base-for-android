@@ -27,6 +27,10 @@
             android:launchMode="singleTask"
             android:parentActivityName="com.example.receptar.activity.MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activity.RecipeActivity"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.example.receptar.activity.UserRecipesActivity" />
     </application>
 
 </manifest>

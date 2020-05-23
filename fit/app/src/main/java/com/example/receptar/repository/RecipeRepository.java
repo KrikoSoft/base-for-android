@@ -33,5 +33,33 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return recipes.get();
     }
 
+    public Recipe getRecipeById(final int recipeId) {
+        final AtomicReference<Recipe> recipe = new AtomicReference<>();
+        final AtomicBoolean mutex = new AtomicBoolean(false);
+        new HandleObjectAsyncTask<Recipe>(new Runnable() {
+            @Override
+            public void run() {
+                recipe.set(((RecipeDao) basicDao).getRecipe(recipeId));
+                mutex.set(true);
+            }
+        }).execute();
+        while (!mutex.get()) ;
+        return recipe.get();
+    }
+
+    public String getRecipeOwner(final int recipeId) {
+        final AtomicReference<String> owner = new AtomicReference<>();
+        final AtomicBoolean mutex = new AtomicBoolean(false);
+        new HandleObjectAsyncTask<String>(new Runnable() {
+            @Override
+            public void run() {
+                owner.set(((RecipeDao) basicDao).getRecipeOwner(recipeId));
+                mutex.set(true);
+            }
+        }).execute();
+        while (!mutex.get()) ;
+        return owner.get();
+    }
+
 }
 

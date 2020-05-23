@@ -37,7 +37,7 @@ public class UserRecipesActivity extends BasicActivity<UserRecipesViewModel> {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        adapter = new RecipeAdapter();
+        adapter = new RecipeAdapter(getApplicationContext());
         recyclerView.setAdapter(adapter);
 
         viewModel = ViewModelProviders.of(this).get(UserRecipesViewModel.class);
