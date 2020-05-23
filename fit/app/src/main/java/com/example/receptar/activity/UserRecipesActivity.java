@@ -31,7 +31,6 @@ public class UserRecipesActivity extends BasicActivity<UserRecipesViewModel> {
         recyclerView.setAdapter(adapter);
 
         viewModel = ViewModelProviders.of(this).get(UserRecipesViewModel.class);
-        viewModel.insert(new Recipe("SUPER RECEPT", LoginData.getLoggedUserId()));
         adapter.setRecipes(viewModel.getFilteredRecipes(""));
         EditText editText = findViewById(R.id.edit_text_recipe_filter);
         editText.addTextChangedListener(new TextWatcher() {
@@ -43,7 +42,7 @@ public class UserRecipesActivity extends BasicActivity<UserRecipesViewModel> {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // we change filter
-                adapter.setRecipes(viewModel.getFilteredRecipes(charSequence.toString()));
+                filterRecipes(adapter, charSequence.toString());
             }
 
             @Override
@@ -51,6 +50,10 @@ public class UserRecipesActivity extends BasicActivity<UserRecipesViewModel> {
                 // do nothing
             }
         });
+    }
+
+    private void filterRecipes(RecipeAdapter adapter, String filter) {
+        adapter.setRecipes(viewModel.getFilteredRecipes(filter));
     }
 
 }
