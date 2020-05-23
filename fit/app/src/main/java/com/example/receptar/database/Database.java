@@ -10,11 +10,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.receptar.dao.RecipeDao;
 import com.example.receptar.dao.UserDao;
 import com.example.receptar.java.Recipe;
+import com.example.receptar.java.RecipeComment;
 import com.example.receptar.java.User;
 
 import lombok.NonNull;
 
-@androidx.room.Database(entities = {User.class, Recipe.class}, version = 1, exportSchema = false)
+@androidx.room.Database(entities = {User.class, Recipe.class, RecipeComment.class}, version = 1, exportSchema = false)
 public abstract class Database extends RoomDatabase {
 
     public abstract UserDao userDao();
