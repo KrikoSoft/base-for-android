@@ -5,4 +5,7 @@
     <string name="password">Heslo</string>
     <string name="register">Registrovať</string>
     <string name="recipe_name">Názov receptu</string>
+    <string name="save">Uložiť</string>
+    <string name="recipe_title">Názov receptu</string>
+    <string name="steps">Postup</string>
 </resources>

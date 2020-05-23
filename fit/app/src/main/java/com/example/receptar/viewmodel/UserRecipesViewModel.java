@@ -3,7 +3,6 @@ package com.example.receptar.viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.receptar.java.LoginData;
@@ -12,8 +11,6 @@ import com.example.receptar.repository.RecipeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import lombok.Getter;
 
 public class UserRecipesViewModel extends BasicViewModel<Recipe, RecipeRepository> {
 

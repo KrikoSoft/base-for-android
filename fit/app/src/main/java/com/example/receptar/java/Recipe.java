@@ -15,13 +15,15 @@ public class Recipe {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String title;
     @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId")
     private int userId;
+    private String title;
+    private String text;
 
-    public Recipe(String title, int userId) {
-        this.title = title;
+    public Recipe(int userId, String title, String text) {
         this.userId = userId;
+        this.title = title;
+        this.text = text;
     }
 
 }
