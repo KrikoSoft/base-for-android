@@ -1,4 +1,6 @@
 <resources>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="app_name">Receptár</string>
     <string name="login">Prihlásiť</string>
     <string name="user_name">Prihlasovacie meno</string>
@@ -12,5 +14,8 @@
     <string name="edit">Upraviť</string>
     <string name="delete">Odstrániť</string>
     <string name="publish_comment">Uverejniť komentár</string>
-    <string name="write_comment_hint">Napíšte komentár...</string>
+    <string name="write_comment_hint">Napíšte komentár…</string>
+    <string name="user_recipes">Moje recepty</string>
+    <string name="logout">Odhlásiť</string>
+    <string name="browse_recipes">Prehliadať recepty</string>
 </resources>

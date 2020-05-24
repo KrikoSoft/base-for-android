@@ -13,7 +13,7 @@
             android:name="com.example.receptar.activity.EditRecipeActivity"
             android:label="Pridať Recept"
             android:launchMode="singleTask"
-            android:parentActivityName="com.example.receptar.activity.UserRecipesActivity" />
+            android:parentActivityName="com.example.receptar.activity.InsideActivity" />
         <activity android:name="com.example.receptar.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,16 +21,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.receptar.activity.UserRecipesActivity"
+            android:name="com.example.receptar.activity.InsideActivity"
             android:configChanges="orientation"
             android:label="Moje Recepty"
             android:launchMode="singleTask"
             android:parentActivityName="com.example.receptar.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activity.RecipeActivity"
             android:launchMode="singleTask"
-            android:parentActivityName="com.example.receptar.activity.UserRecipesActivity" />
+            android:parentActivityName="com.example.receptar.activity.InsideActivity" />
     </application>
 
 </manifest>
