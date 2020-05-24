@@ -16,6 +16,7 @@ import com.example.receptar.viewmodel.MainViewModel;
 
 public class MainActivity extends BasicActivity<MainViewModel> {
 
+    public static final String EXTRA_USER_NAME = "EXTRA_USER_NAME";
     private EditText usernameEditText;
     private EditText passwordEditText;
 

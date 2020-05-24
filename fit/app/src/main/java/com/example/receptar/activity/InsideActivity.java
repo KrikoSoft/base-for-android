@@ -2,6 +2,7 @@ package com.example.receptar.activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.receptar.R;
+import com.example.receptar.java.LoginData;
 import com.google.android.material.navigation.NavigationView;
 
 public class InsideActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,8 +30,11 @@ public class InsideActivity extends AppCompatActivity implements NavigationView.
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        NavigationView view = findViewById(R.id.nav_view);
-        view.setNavigationItemSelectedListener(this);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        TextView view = navigationView.getHeaderView(0).findViewById(R.id.nav_bar_user_name);
+        view.setText(LoginData.getLoggedUserName());
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -37,7 +42,7 @@ public class InsideActivity extends AppCompatActivity implements NavigationView.
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserRecipesFragment()).commit();
-            view.setCheckedItem(R.id.nav_user_recipes);
+            navigationView.setCheckedItem(R.id.nav_user_recipes);
         }
     }
 

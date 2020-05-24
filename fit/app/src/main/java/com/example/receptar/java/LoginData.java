@@ -13,4 +13,7 @@ public class LoginData {
         return loggedUser.getId();
     }
 
+    public static String getLoggedUserName() {
+        return loggedUser.getUserName();
+    }
 }
