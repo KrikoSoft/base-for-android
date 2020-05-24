@@ -4,32 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button_publish_comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text_comment"
-        android:text="@string/publish_comment" />
-
-    <EditText
-        android:id="@+id/edit_text_comment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/comments_recycler_view"
-        android:autofillHints=""
-        android:hint="@string/write_comment_hint"
-        android:inputType="textMultiLine" />
-
-
-    <TextView
-        android:id="@+id/text_view_recipe_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_recipe_text_title"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
     <TextView
         android:id="@+id/text_view_recipe_title"
         android:layout_width="match_parent"
@@ -57,10 +31,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
-        android:id="@+id/text_view_comment_section"
+        android:id="@+id/text_view_recipe_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_view_recipe_text_title"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/text_view_comment_section_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_recipe_text"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="@string/comment_section_title"
@@ -70,6 +53,23 @@
         android:id="@+id/comments_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_comment_section"
+        android:layout_below="@+id/text_view_comment_section_title"
         tools:listitem="@layout/comment_item" />
+
+    <EditText
+        android:id="@+id/edit_text_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comments_recycler_view"
+        android:autofillHints=""
+        android:hint="@string/write_comment_hint"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/button_publish_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_text_comment"
+        android:text="@string/publish_comment" />
+
 </RelativeLayout>
