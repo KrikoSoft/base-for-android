@@ -18,4 +18,5 @@
     <string name="user_recipes">Moje recepty</string>
     <string name="logout">Odhlásiť</string>
     <string name="browse_recipes">Prehliadať recepty</string>
+    <string name="comment_section_title">Komentáre</string>
 </resources>

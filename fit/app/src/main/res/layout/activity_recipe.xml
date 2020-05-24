@@ -56,10 +56,20 @@
         android:text="@string/recipe_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
+    <TextView
+        android:id="@+id/text_view_comment_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_recipe_text_title"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/comment_section_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/comments_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_view_recipe_text"
+        android:layout_below="@+id/text_view_comment_section"
         tools:listitem="@layout/comment_item" />
 </RelativeLayout>
