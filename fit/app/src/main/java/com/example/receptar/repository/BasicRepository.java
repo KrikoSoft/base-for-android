@@ -1,9 +1,10 @@
 package com.example.receptar.repository;
 
-import android.app.Application;
 import android.os.AsyncTask;
 
 import com.example.receptar.dao.BasicDao;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import lombok.AllArgsConstructor;
 
@@ -17,32 +18,41 @@ public class BasicRepository<T> {
 
     @SuppressWarnings("unchecked")
     public void insert(final T object) {
+        final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<T>(new Runnable() {
             @Override
             public void run() {
                 basicDao.insert(object);
+                mutex.set(true);
             }
         }).execute();
+        while (!mutex.get()) ;
     }
 
     @SuppressWarnings("unchecked")
     public void update(final T object) {
+        final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<T>(new Runnable() {
             @Override
             public void run() {
                 basicDao.update(object);
+                mutex.set(true);
             }
         }).execute();
+        while (!mutex.get()) ;
     }
 
     @SuppressWarnings("unchecked")
     public void delete(final T object) {
+        final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<T>(new Runnable() {
             @Override
             public void run() {
                 basicDao.delete(object);
+                mutex.set(true);
             }
         }).execute();
+        while (!mutex.get()) ;
     }
 
     @AllArgsConstructor
@@ -56,41 +66,5 @@ public class BasicRepository<T> {
             return null;
         }
     }
-
-//    @AllArgsConstructor
-//    private static class InsertObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
-//        private BasicDao<T> basicDao;
-//
-//        @SafeVarargs
-//        @Override
-//        protected final Void doInBackground(T... objects) {
-//            basicDao.insert(objects[0]);
-//            return null;
-//        }
-//    }
-//
-//    @AllArgsConstructor
-//    private static class UpdateObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
-//        private BasicDao<T> basicDao;
-//
-//        @SafeVarargs
-//        @Override
-//        protected final Void doInBackground(T... objects) {
-//            basicDao.update(objects[0]);
-//            return null;
-//        }
-//    }
-//
-//    @AllArgsConstructor
-//    private static class DeleteObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
-//        private BasicDao<T> userDao;
-//
-//        @SafeVarargs
-//        @Override
-//        protected final Void doInBackground(T... objects) {
-//            userDao.delete(objects[0]);
-//            return null;
-//        }
-//    }
 
 }

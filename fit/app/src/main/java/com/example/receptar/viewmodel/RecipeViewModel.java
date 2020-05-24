@@ -4,8 +4,13 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 
+import com.example.receptar.java.LoginData;
 import com.example.receptar.java.Recipe;
+import com.example.receptar.java.RecipeComment;
 import com.example.receptar.repository.RecipeRepository;
+
+import java.util.List;
+import java.util.Map;
 
 public class RecipeViewModel extends BasicViewModel<Recipe, RecipeRepository> {
 
@@ -15,8 +20,16 @@ public class RecipeViewModel extends BasicViewModel<Recipe, RecipeRepository> {
 
     public String getRecipeHeader(int recipeId) {
         Recipe recipe = repository.getRecipeById(recipeId);
-        String userName = repository.getRecipeOwner(recipeId);
+        String userName = repository.getRecipeAuthor(recipeId);
         return recipe.getTitle() + " od " + userName;
+    }
+
+    public String getRecipeTitle(int recipeId) {
+        return repository.getRecipeById(recipeId).getTitle();
+    }
+
+    public String getRecipeAuthor(int recipeId) {
+        return repository.getRecipeAuthor(recipeId);
     }
 
     public String getRecipeText(int recipeId) {
@@ -31,5 +44,13 @@ public class RecipeViewModel extends BasicViewModel<Recipe, RecipeRepository> {
     public void deleteById(int recipeId) {
         Recipe recipe = repository.getRecipeById(recipeId);
         delete(recipe);
+    }
+
+    public List<Map.Entry<String, RecipeComment>> getRecipeComments(final int recipeId) {
+        return repository.getRecipeComments(recipeId);
+    }
+
+    public void addComment(String comment, int recipeId) {
+        repository.addRecipeComment(LoginData.getLoggedUserId(), comment, recipeId);
     }
 }

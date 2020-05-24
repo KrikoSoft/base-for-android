@@ -11,4 +11,6 @@
     <string name="recipe_text">Postup:</string>
     <string name="edit">Upraviť</string>
     <string name="delete">Odstrániť</string>
+    <string name="publish_comment">Uverejniť komentár</string>
+    <string name="write_comment_hint">Napíšte komentár...</string>
 </resources>

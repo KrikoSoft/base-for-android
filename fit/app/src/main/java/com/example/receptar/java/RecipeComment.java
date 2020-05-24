@@ -19,10 +19,13 @@ public class RecipeComment {
     @ForeignKey(entity = Recipe.class, parentColumns = "id", childColumns = "recipeId")
     private int recipeId;
     private String commentText;
+    @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "authorId")
+    private int authorId;
 
-    public RecipeComment(int recipeId, String commentText) {
+    public RecipeComment(int recipeId, String commentText, int authorId) {
         this.recipeId = recipeId;
         this.commentText = commentText;
+        this.authorId = authorId;
     }
 
 }

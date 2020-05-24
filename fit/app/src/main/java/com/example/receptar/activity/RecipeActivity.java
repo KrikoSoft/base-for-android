@@ -5,13 +5,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.receptar.R;
+import com.example.receptar.adapter.CommentAdapter;
 import com.example.receptar.java.LoginData;
 import com.example.receptar.java.Recipe;
 import com.example.receptar.viewmodel.RecipeViewModel;
@@ -25,6 +31,8 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
     public static final String EXTRA_REQUEST_CODE = "EXTRA_REQUEST_CODE";
     private int recipeId;
 
+    private EditText commentBody;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +41,37 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
 
         viewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
         updateContent();
+
+        RecyclerView recyclerView = findViewById(R.id.comments_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        final CommentAdapter adapter = new CommentAdapter();
+        recyclerView.setAdapter(adapter);
+
+        adapter.setComments(viewModel.getRecipeComments(recipeId));
+        commentBody = findViewById(R.id.edit_text_comment);
+        Button submitButton = findViewById(R.id.button_publish_comment);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (commentBody.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Komentár musí obsahovať text!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                viewModel.addComment(commentBody.getText().toString(), recipeId);
+                adapter.setComments(viewModel.getRecipeComments(recipeId));
+                Toast.makeText(getApplicationContext(), "Komentár uverejnený!", Toast.LENGTH_SHORT).show();
+                commentBody.setText("");
+            }
+        });
     }
 
     private void updateContent() {
         setTitle(viewModel.getRecipeHeader(recipeId));
+
+        ((TextView) findViewById(R.id.text_view_recipe_title)).setText(viewModel.getRecipeTitle(recipeId));
+        ((TextView) findViewById(R.id.text_view_recipe_author)).setText(viewModel.getRecipeAuthor(recipeId));
 
         TextView recipeTextView = findViewById(R.id.text_view_recipe_text);
         recipeTextView.setText(viewModel.getRecipeText(recipeId));
