@@ -40,6 +40,7 @@ public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
         viewModel = ViewModelProviders.of(this).get(UserRecipesViewModel.class);
         adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), true);
         recyclerView.setAdapter(adapter);
+        filter = "";
 
         adapter.setRecipes(viewModel.getFilteredRecipes(""));
         EditText editText = view.findViewById(R.id.edit_text_recipe_filter);
