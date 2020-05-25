@@ -12,6 +12,9 @@ import com.example.receptar.repository.RecipeRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * view model for user recipes activity
+ */
 public class UserRecipesViewModel extends BasicViewModel<Recipe, RecipeRepository> {
 
     private MutableLiveData<String> recipesFilter;
@@ -21,6 +24,9 @@ public class UserRecipesViewModel extends BasicViewModel<Recipe, RecipeRepositor
         recipesFilter = new MutableLiveData<>("%");
     }
 
+    /**
+     * @return list of recipes containing filter in title created by logged user
+     */
     public List<Recipe> getFilteredRecipes(String newString) {
         recipesFilter.setValue("%" + newString + "%");
         List<Recipe> recipes = repository.getFilteredRecipes(LoginData.getLoggedUserId(), recipesFilter.getValue());

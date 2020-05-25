@@ -8,15 +8,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * base class for repository which contains the dao that the repository is using
+ *
+ * @param <T> type of entity the dao and repository works with
+ */
 public class BasicRepository<T> {
 
-    BasicDao<T> basicDao;
+    protected BasicDao<T> basicDao;
 
-    BasicRepository(BasicDao<T> basicDao) {
+    protected BasicRepository(BasicDao<T> basicDao) {
         this.basicDao = basicDao;
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * method which calls insert on a table from specific dao
+     */
     public void insert(final T object) {
         final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<T>(new Runnable() {
@@ -30,6 +38,9 @@ public class BasicRepository<T> {
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * method which calls update on a table from specific dao
+     */
     public void update(final T object) {
         final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<T>(new Runnable() {
@@ -43,6 +54,9 @@ public class BasicRepository<T> {
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * method which calls delete on a table from specific dao
+     */
     public void delete(final T object) {
         final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<T>(new Runnable() {
@@ -56,6 +70,9 @@ public class BasicRepository<T> {
     }
 
     @AllArgsConstructor
+    /**
+     * static class which creates async communication with database
+     */
     protected static class HandleObjectAsyncTask<T> extends AsyncTask<T, Void, Void> {
         private Runnable task;
 

@@ -16,12 +16,19 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * repository class for retrieving recipe data from database
+ */
 public class RecipeRepository extends BasicRepository<Recipe> {
 
     public RecipeRepository(Application application) {
         super(Database.getInstance(application).recipeDao());
     }
 
+    /**
+     * @param filter string contained in recipe title
+     * @return list of recipes containing filter in title
+     */
     public List<Recipe> getFilteredRecipes(final String filter) {
         final AtomicReference<List<Recipe>> recipes = new AtomicReference<>();
         final AtomicBoolean mutex = new AtomicBoolean(false);
@@ -37,6 +44,11 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return recipes.get();
     }
 
+    /**
+     * @param userId id of recipe author
+     * @param filter string contained in recipe title
+     * @return list of recipes containing filter in title created by user with id = userId
+     */
     public List<Recipe> getFilteredRecipes(final int userId, final String filter) {
         final AtomicReference<List<Recipe>> recipes = new AtomicReference<>();
         final AtomicBoolean mutex = new AtomicBoolean(false);
@@ -52,6 +64,10 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return recipes.get();
     }
 
+    /**
+     * @param recipeId id of the recipe
+     * @return recipe with id = recipeId
+     */
     public Recipe getRecipeById(final int recipeId) {
         final AtomicReference<Recipe> recipe = new AtomicReference<>();
         final AtomicBoolean mutex = new AtomicBoolean(false);
@@ -66,6 +82,10 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return recipe.get();
     }
 
+    /**
+     * @param userId id of user
+     * @return name of user with id = userId
+     */
     public String getRecipeAuthor(final int userId) {
         final AtomicReference<String> owner = new AtomicReference<>();
         final AtomicBoolean mutex = new AtomicBoolean(false);
@@ -80,6 +100,11 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return owner.get();
     }
 
+    /**
+     * @param recipeId id of the recipe
+     * @return list of map entries where the key is the  name of the author of the comment
+     * and the value is the text of the comment
+     */
     public List<Map.Entry<String, RecipeComment>> getRecipeComments(final int recipeId) {
         final AtomicReference<List<RecipeComment>> comments = new AtomicReference<>();
         final AtomicBoolean mutex = new AtomicBoolean(false);
@@ -108,6 +133,13 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return map;
     }
 
+    /**
+     * method which inserts new comment to the database
+     *
+     * @param userId   id of the comment author
+     * @param comment  text of the comment
+     * @param recipeId id of the recipe
+     */
     public void addRecipeComment(final int userId, final String comment, final int recipeId) {
         final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<User>(new Runnable() {

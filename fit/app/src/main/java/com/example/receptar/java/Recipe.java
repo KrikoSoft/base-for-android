@@ -4,13 +4,15 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity(tableName = "recipes")
+/**
+ * entity class for recipe, which tells the dao the table name and column names of recipe entity in our database
+ */
 public class Recipe {
 
     @PrimaryKey(autoGenerate = true)

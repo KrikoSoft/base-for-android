@@ -3,9 +3,14 @@ package com.example.receptar.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * class containing utility methods for database
+ */
 public class DbUtils {
 
     /**
+     * method to encrypt password
+     * <p>
      * algorithm source https://www.tutorialspoint.com/how-to-encrypt-password-and-store-in-android-sqlite
      */
     public static String passwordEncrypt(final String s) {

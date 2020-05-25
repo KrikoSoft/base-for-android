@@ -26,6 +26,9 @@ import com.example.receptar.viewmodel.RecipeViewModel;
 
 import static com.example.receptar.adapter.RecipeAdapter.EXTRA_RECIPE_ID;
 
+/**
+ * activity which shows a recipe and comments in the recipe
+ */
 public class RecipeActivity extends BasicActivity<RecipeViewModel> {
 
     public static final int REQUEST_EDIT_RECIPE = 1;
@@ -71,6 +74,9 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
         });
     }
 
+    /**
+     * method which updates content of the activity
+     */
     private void updateContent() {
         setTitle(viewModel.getRecipeHeader(recipeId));
 
@@ -115,6 +121,9 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * method which sends result of editing a recipe
+     */
     public void editRecipe() {
         Intent intent = new Intent(getApplicationContext(), EditRecipeActivity.class);
         intent.putExtra(EXTRA_RECIPE_ID, recipeId);
@@ -138,6 +147,9 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
         }
     }
 
+    /**
+     * method which deletes a recipe
+     */
     public void deleteRecipe() {
         viewModel.deleteById(recipeId);
     }

@@ -11,6 +11,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(tableName = "users")
+/**
+ * entity class for user, which tells the dao the table name and column names of user entity in our database
+ */
 public class User {
 
     @PrimaryKey(autoGenerate = true)

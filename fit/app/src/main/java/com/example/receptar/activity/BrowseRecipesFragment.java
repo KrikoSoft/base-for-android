@@ -21,6 +21,9 @@ import com.example.receptar.viewmodel.BrowseRecipesViewModel;
 import static android.app.Activity.RESULT_OK;
 import static com.example.receptar.activity.RecipeActivity.REQUEST_EDIT_RECIPE;
 
+/**
+ * fragment for browsing all recipes
+ */
 public class BrowseRecipesFragment extends BasicFragment<BrowseRecipesViewModel> {
     private RecipeAdapter adapter;
     private String filter;
@@ -61,6 +64,9 @@ public class BrowseRecipesFragment extends BasicFragment<BrowseRecipesViewModel>
         return view;
     }
 
+    /**
+     * method which filters recipes
+     */
     private void filterRecipes() {
         adapter.setRecipes(viewModel.getFilteredRecipes(filter));
     }

@@ -19,6 +19,9 @@ import com.example.receptar.repository.RecipeRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * adapter which contains recipe title and handles on click
+ */
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHolder> {
 
     public static final String EXTRA_RECIPE_ID = "EXTRA_RECIPE_ID";

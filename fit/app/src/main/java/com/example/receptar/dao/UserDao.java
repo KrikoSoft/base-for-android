@@ -9,6 +9,9 @@ import com.example.receptar.java.User;
 import java.util.List;
 
 @Dao
+/**
+ * dao for handling users
+ */
 public interface UserDao extends BasicDao<User> {
 
     @Query("SELECT * FROM users ORDER BY id")

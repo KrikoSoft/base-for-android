@@ -14,6 +14,9 @@ import com.example.receptar.java.LoginData;
 import com.example.receptar.java.User;
 import com.example.receptar.viewmodel.MainViewModel;
 
+/**
+ * main activity which runs on app open and contains login and register options
+ */
 public class MainActivity extends BasicActivity<MainViewModel> {
 
     private EditText usernameEditText;
@@ -42,6 +45,9 @@ public class MainActivity extends BasicActivity<MainViewModel> {
         });
     }
 
+    /**
+     * logs existing user in the app
+     */
     private void login() {
         User user = viewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
         if (user == null) {
@@ -54,6 +60,9 @@ public class MainActivity extends BasicActivity<MainViewModel> {
         }
     }
 
+    /**
+     * registers new user to the app and logs him
+     */
     private void register() {
         User user = viewModel.register(usernameEditText.getText().toString(), passwordEditText.getText().toString());
         if (user == null) {

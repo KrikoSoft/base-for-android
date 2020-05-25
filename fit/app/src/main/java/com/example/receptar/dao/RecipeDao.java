@@ -10,6 +10,9 @@ import com.example.receptar.java.RecipeComment;
 import java.util.List;
 
 @Dao
+/**
+ * dao for handling recipes
+ */
 public interface RecipeDao extends BasicDao<Recipe> {
 
     @Query("SELECT * FROM recipes WHERE userId = :userId AND title LIKE :content ORDER BY id")

@@ -4,6 +4,11 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Update;
 
+/**
+ * basic dao containing methods for insert, update and delete of an object
+ *
+ * @param <T> object with which the dao works
+ */
 public interface BasicDao<T> {
 
     @Insert

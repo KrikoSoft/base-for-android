@@ -18,6 +18,9 @@ import com.example.receptar.R;
 import com.example.receptar.java.LoginData;
 import com.google.android.material.navigation.NavigationView;
 
+/**
+ * activity which contains navigation view and fragments for user recipes or browsing recipes
+ */
 public class InsideActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;

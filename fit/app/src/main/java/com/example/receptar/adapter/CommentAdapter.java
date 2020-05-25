@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * adapter containing comment items
+ */
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentHolder> {
 
     private List<Map.Entry<String, RecipeComment>> comments = new ArrayList<>();

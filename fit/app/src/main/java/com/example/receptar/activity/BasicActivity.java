@@ -7,6 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.receptar.viewmodel.BasicViewModel;
 
+/**
+ * abstract activity which conations view model for activity
+ *
+ * @param <BVM> type parameter of viewmodel
+ */
 public abstract class BasicActivity<BVM extends BasicViewModel> extends AppCompatActivity {
 
     protected BVM viewModel;

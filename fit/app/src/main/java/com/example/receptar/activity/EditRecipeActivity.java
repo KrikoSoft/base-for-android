@@ -18,6 +18,9 @@ import static com.example.receptar.activity.RecipeActivity.EXTRA_REQUEST_CODE;
 import static com.example.receptar.activity.RecipeActivity.REQUEST_EDIT_RECIPE;
 import static com.example.receptar.adapter.RecipeAdapter.EXTRA_RECIPE_ID;
 
+/**
+ * activity for editing or adding a recipe
+ */
 public class EditRecipeActivity extends BasicActivity<RecipeViewModel> {
 
     public static final String EXTRA_TITLE = "EXTRA_TITLE";
@@ -46,6 +49,9 @@ public class EditRecipeActivity extends BasicActivity<RecipeViewModel> {
         }
     }
 
+    /**
+     * method which saves changes in existing recipe or adds new recipe
+     */
     private void saveRecipe() {
         String recipeTitle = editTextTitle.getText().toString();
         if (recipeTitle.trim().isEmpty()) {

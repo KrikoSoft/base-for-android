@@ -25,6 +25,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import static android.app.Activity.RESULT_OK;
 import static com.example.receptar.adapter.RecipeAdapter.REQUEST_SHOW_RECIPE;
 
+/**
+ * fragment which contains user recipes
+ */
 public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
     public static final int REQUEST_ADD_RECIPE = 1;
     private RecipeAdapter adapter;
@@ -89,6 +92,9 @@ public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
         }
     }
 
+    /**
+     * method which gets recipes filtered by a string
+     */
     private void filterRecipes() {
         adapter.setRecipes(viewModel.getFilteredRecipes(filter));
     }

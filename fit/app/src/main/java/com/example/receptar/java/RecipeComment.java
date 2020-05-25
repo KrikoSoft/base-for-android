@@ -11,6 +11,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(tableName = "comments")
+/**
+ * entity class for comment, which tells the dao the table name and column names of comment entity in our database
+ */
 public class RecipeComment {
 
     @PrimaryKey(autoGenerate = true)
