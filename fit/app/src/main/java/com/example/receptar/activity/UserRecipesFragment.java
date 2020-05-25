@@ -82,7 +82,7 @@ public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
             String steps = intent.getStringExtra(EditRecipeActivity.EXTRA_STEPS);
             viewModel.insert(new Recipe(LoginData.getLoggedUserId(), title, steps));
             filterRecipes();
-            Toast.makeText(getContext(), "Recept uložený!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.recipe_saved, Toast.LENGTH_SHORT).show();
         }
     }
 

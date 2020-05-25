@@ -69,7 +69,7 @@ public class InsideActivity extends AppCompatActivity implements NavigationView.
                 break;
             case R.id.nav_logout:
                 LoginData.setLoggedUser(null);
-                Toast.makeText(getApplicationContext(), "Odhlásenie úspešne!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.logout_success, Toast.LENGTH_LONG).show();
                 finish();
                 break;
         }

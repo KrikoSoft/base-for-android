@@ -49,12 +49,12 @@ public class EditRecipeActivity extends BasicActivity<RecipeViewModel> {
     private void saveRecipe() {
         String recipeTitle = editTextTitle.getText().toString();
         if (recipeTitle.trim().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Recept nemá zadaný názov!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.recipe_no_title_alert, Toast.LENGTH_LONG).show();
             return;
         }
         String recipeSteps = editTextRecipeSteps.getText().toString();
         if (recipeSteps.trim().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Recept nemá zadaný postup!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.recipe_no_body_alert, Toast.LENGTH_LONG).show();
             return;
         }
         Intent intent = new Intent();

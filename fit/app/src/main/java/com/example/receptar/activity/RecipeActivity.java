@@ -1,5 +1,7 @@
 package com.example.receptar.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -57,12 +59,12 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
             @Override
             public void onClick(View view) {
                 if (commentBody.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Komentár musí obsahovať text!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.comment_text_alert, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 viewModel.addComment(commentBody.getText().toString(), recipeId);
                 adapter.setComments(viewModel.getRecipeComments(recipeId));
-                Toast.makeText(getApplicationContext(), "Komentár uverejnený!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.comment_published, Toast.LENGTH_SHORT).show();
                 commentBody.setText("");
             }
         });
@@ -95,9 +97,16 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
             editRecipe();
             return true;
         } else if (item.getItemId() == R.id.delete_recipe) {
-            deleteRecipe();
-            finish();
-            Toast.makeText(getApplicationContext(), "Recept odstránený!", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(RecipeActivity.this)
+                    .setTitle(R.string.alert)
+                    .setMessage(R.string.delete_recipe_question)
+                    .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            deleteRecipe();
+                            finish();
+                            Toast.makeText(getApplicationContext(), R.string.recipe_deleted, Toast.LENGTH_SHORT).show();
+                        }
+                    }).setNegativeButton(R.string.cancel, null).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -120,7 +129,7 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
             Recipe updatedRecipe = new Recipe(LoginData.getLoggedUserId(), title, steps);
             updatedRecipe.setId(recipeId);
             viewModel.update(updatedRecipe);
-            Toast.makeText(getApplicationContext(), "Recept uložený!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.recipe_saved, Toast.LENGTH_SHORT).show();
             updateContent();
         }
     }

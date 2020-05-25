@@ -45,9 +45,9 @@ public class MainActivity extends BasicActivity<MainViewModel> {
     private void login() {
         User user = viewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
         if (user == null) {
-            Toast.makeText(getApplicationContext(), "Problém s prihlásením", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.login_failed, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "Prihlásenie úspešné", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.login_success, Toast.LENGTH_LONG).show();
             LoginData.setLoggedUser(user);
 
             startActivity(new Intent(getApplicationContext(), InsideActivity.class));
@@ -57,9 +57,9 @@ public class MainActivity extends BasicActivity<MainViewModel> {
     private void register() {
         User user = viewModel.register(usernameEditText.getText().toString(), passwordEditText.getText().toString());
         if (user == null) {
-            Toast.makeText(getApplicationContext(), "Problém s registráciou", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.register_failed, Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "Registrácia úspešná!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.register_success, Toast.LENGTH_LONG).show();
             LoginData.setLoggedUser(user);
             startActivity(new Intent(getApplicationContext(), InsideActivity.class));
         }

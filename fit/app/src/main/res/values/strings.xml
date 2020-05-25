@@ -19,4 +19,19 @@
     <string name="logout">Odhlásiť</string>
     <string name="browse_recipes">Prehliadať recepty</string>
     <string name="comment_section_title">Komentáre</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="alert">Pozor!</string>
+    <string name="delete_recipe_question">Naozaj chcete odstrániť tento recept?</string>
+    <string name="recipe_deleted">Recept odstránený!</string>
+    <string name="recipe_saved">Recept uložený!</string>
+    <string name="comment_text_alert">Komentár musí obsahovať text!</string>
+    <string name="comment_published">Komentár uverejnený!</string>
+    <string name="recipe_no_title_alert">Recept nemá zadaný názov!</string>
+    <string name="recipe_no_body_alert">Recept nemá zadaný postup!</string>
+    <string name="logout_success">Odhlásenie úspešne!</string>
+    <string name="login_failed">Problém s prihlásením</string>
+    <string name="login_success">Prihlásenie úspešné</string>
+    <string name="register_failed">Problém s registráciou</string>
+    <string name="register_success">Registrácia úspešná!</string>
+    <string name="recipe_saved">Recept uložený!</string>
 </resources>
