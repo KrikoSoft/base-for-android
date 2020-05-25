@@ -72,7 +72,7 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         new HandleObjectAsyncTask<String>(new Runnable() {
             @Override
             public void run() {
-                owner.set(((RecipeDao) basicDao).getRecipeOwner(recipeId));
+                owner.set(((RecipeDao) basicDao).getRecipeAuthor(recipeId));
                 mutex.set(true);
             }
         }).execute();

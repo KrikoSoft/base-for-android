@@ -8,14 +8,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.receptar.R;
 import com.example.receptar.java.Recipe;
 import com.example.receptar.viewmodel.RecipeViewModel;
-
-import java.util.Objects;
 
 import static com.example.receptar.activity.RecipeActivity.EXTRA_REQUEST_CODE;
 import static com.example.receptar.activity.RecipeActivity.REQUEST_EDIT_RECIPE;
@@ -29,7 +26,6 @@ public class EditRecipeActivity extends BasicActivity<RecipeViewModel> {
     private EditText editTextTitle;
     private EditText editTextRecipeSteps;
 
-    private boolean editing = false;
     private int recipeId;
 
     @Override
@@ -40,12 +36,9 @@ public class EditRecipeActivity extends BasicActivity<RecipeViewModel> {
         editTextTitle = findViewById(R.id.edit_text_recipe_title);
         editTextRecipeSteps = findViewById(R.id.edit_text_recipe_steps);
 
-        editing = false;
         viewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
 
-
         if (getIntent().getIntExtra(EXTRA_REQUEST_CODE, 0) == REQUEST_EDIT_RECIPE) {
-            editing = true;
             recipeId = getIntent().getIntExtra(EXTRA_RECIPE_ID, 0);
             Recipe recipe = viewModel.getRecipe(recipeId);
             editTextTitle.setText(recipe.getTitle());

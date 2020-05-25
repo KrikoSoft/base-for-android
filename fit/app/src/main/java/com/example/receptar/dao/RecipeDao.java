@@ -1,6 +1,5 @@
 package com.example.receptar.dao;
 
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -22,8 +21,8 @@ public interface RecipeDao extends BasicDao<Recipe> {
     @Query("SELECT * FROM recipes  WHERE id = :recipeId")
     Recipe getRecipe(int recipeId);
 
-    @Query("SELECT userName FROM users u JOIN recipes r ON r.userId = u.id WHERE r.id = :recipeId")
-    String getRecipeOwner(int recipeId);
+    @Query("SELECT userName FROM users WHERE id = :userId")
+    String getRecipeAuthor(int userId);
 
     @Query("SELECT userName FROM users u JOIN comments c ON u.id = c.authorId WHERE c.id = :commentId")
     String getCommentAuthor(int commentId);

@@ -3,6 +3,7 @@ package com.example.receptar.activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -67,6 +68,8 @@ public class InsideActivity extends AppCompatActivity implements NavigationView.
                 setTitle(R.string.browse_recipes);
                 break;
             case R.id.nav_logout:
+                LoginData.setLoggedUser(null);
+                Toast.makeText(getApplicationContext(), "Odhlásenie úspešne!", Toast.LENGTH_LONG).show();
                 finish();
                 break;
         }

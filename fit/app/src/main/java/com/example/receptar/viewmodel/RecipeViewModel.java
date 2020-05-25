@@ -20,7 +20,7 @@ public class RecipeViewModel extends BasicViewModel<Recipe, RecipeRepository> {
 
     public String getRecipeHeader(int recipeId) {
         Recipe recipe = repository.getRecipeById(recipeId);
-        String userName = repository.getRecipeAuthor(recipeId);
+        String userName = repository.getRecipeAuthor(recipe.getUserId());
         return recipe.getTitle() + " od " + userName;
     }
 
