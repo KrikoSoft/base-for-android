@@ -66,6 +66,9 @@ public class InsideActivity extends AppCompatActivity implements NavigationView.
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BrowseRecipesFragment()).commit();
                 setTitle(R.string.browse_recipes);
                 break;
+            case R.id.nav_logout:
+                finish();
+                break;
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
