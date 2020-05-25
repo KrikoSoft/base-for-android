@@ -1,5 +1,6 @@
 package com.example.receptar.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,24 +22,27 @@ import java.util.List;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHolder> {
 
     public static final String EXTRA_RECIPE_ID = "EXTRA_RECIPE_ID";
+    public static final int REQUEST_SHOW_RECIPE = 101;
 
     private List<Recipe> recipes = new ArrayList<>();
     private Context context;
     private RecipeRepository repository;
     private boolean userRecipes;
+    private Activity activity;
 
-    public RecipeAdapter(Context context, RecipeRepository repository, boolean userRecipes) {
+    public RecipeAdapter(Context context, RecipeRepository repository, boolean userRecipes, Activity activity) {
         super();
         this.context = context;
         this.repository = repository;
         this.userRecipes = userRecipes;
+        this.activity = activity;
     }
 
     @NonNull
     @Override
     public RecipeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_item, parent, false);
-        return new RecipeHolder(itemView, context);
+        return new RecipeHolder(itemView, context, activity);
     }
 
     @Override
@@ -62,7 +66,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHold
         private TextView textViewRecipeTitle;
         private int recipeId;
 
-        RecipeHolder(@NonNull View itemView, final Context context) {
+        RecipeHolder(@NonNull View itemView, final Context context, final Activity activity) {
             super(itemView);
             textViewRecipeTitle = itemView.findViewById(R.id.text_view_recipe_title);
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +74,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHold
                 public void onClick(View view) {
                     Intent intent = new Intent(context, RecipeActivity.class);
                     intent.putExtra(EXTRA_RECIPE_ID, recipeId);
-                    context.startActivity(intent);
+                    activity.startActivityForResult(intent, REQUEST_SHOW_RECIPE);
                 }
             });
         }

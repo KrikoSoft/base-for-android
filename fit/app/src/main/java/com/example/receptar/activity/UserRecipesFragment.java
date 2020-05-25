@@ -23,6 +23,7 @@ import com.example.receptar.viewmodel.UserRecipesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import static android.app.Activity.RESULT_OK;
+import static com.example.receptar.adapter.RecipeAdapter.REQUEST_SHOW_RECIPE;
 
 public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
     public static final int REQUEST_ADD_RECIPE = 1;
@@ -38,7 +39,7 @@ public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
         recyclerView.setHasFixedSize(true);
 
         viewModel = ViewModelProviders.of(this).get(UserRecipesViewModel.class);
-        adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), true);
+        adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), true, getActivity());
         recyclerView.setAdapter(adapter);
         filter = "";
 
@@ -83,6 +84,8 @@ public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
             viewModel.insert(new Recipe(LoginData.getLoggedUserId(), title, steps));
             filterRecipes();
             Toast.makeText(getContext(), R.string.recipe_saved, Toast.LENGTH_SHORT).show();
+        } else if (requestCode == REQUEST_SHOW_RECIPE && resultCode == RESULT_OK) {
+            filterRecipes();
         }
     }
 

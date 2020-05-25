@@ -66,13 +66,13 @@ public class RecipeRepository extends BasicRepository<Recipe> {
         return recipe.get();
     }
 
-    public String getRecipeAuthor(final int recipeId) {
+    public String getRecipeAuthor(final int userId) {
         final AtomicReference<String> owner = new AtomicReference<>();
         final AtomicBoolean mutex = new AtomicBoolean(false);
         new HandleObjectAsyncTask<String>(new Runnable() {
             @Override
             public void run() {
-                owner.set(((RecipeDao) basicDao).getRecipeAuthor(recipeId));
+                owner.set(((RecipeDao) basicDao).getRecipeAuthor(userId));
                 mutex.set(true);
             }
         }).execute();

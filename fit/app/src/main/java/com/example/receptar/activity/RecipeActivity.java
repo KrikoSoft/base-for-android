@@ -31,6 +31,7 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
     public static final int REQUEST_EDIT_RECIPE = 1;
 
     public static final String EXTRA_REQUEST_CODE = "EXTRA_REQUEST_CODE";
+    public static final String EXTRA_DELETE = "EXTRA_DELETE";
     private int recipeId;
 
     private EditText commentBody;
@@ -103,6 +104,9 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
                     .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             deleteRecipe();
+                            Intent returnIntent = new Intent();
+                            returnIntent.putExtra(EXTRA_DELETE, true);
+                            setResult(RESULT_OK, returnIntent);
                             finish();
                             Toast.makeText(getApplicationContext(), R.string.recipe_deleted, Toast.LENGTH_SHORT).show();
                         }

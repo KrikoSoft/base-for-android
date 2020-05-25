@@ -32,8 +32,8 @@ public class RecipeViewModel extends BasicViewModel<Recipe, RecipeRepository> {
         return repository.getRecipeById(recipeId).getTitle();
     }
 
-    public String getRecipeAuthor(int recipeId) {
-        return repository.getRecipeAuthor(recipeId);
+    public String getRecipeAuthor(int recipedId) {
+        return repository.getRecipeAuthor(repository.getRecipeById(recipedId).getUserId());
     }
 
     public String getRecipeText(int recipeId) {

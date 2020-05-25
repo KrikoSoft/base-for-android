@@ -1,5 +1,6 @@
 package com.example.receptar.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +18,9 @@ import com.example.receptar.R;
 import com.example.receptar.adapter.RecipeAdapter;
 import com.example.receptar.viewmodel.BrowseRecipesViewModel;
 
+import static android.app.Activity.RESULT_OK;
+import static com.example.receptar.activity.RecipeActivity.REQUEST_EDIT_RECIPE;
+
 public class BrowseRecipesFragment extends BasicFragment<BrowseRecipesViewModel> {
     private RecipeAdapter adapter;
     private String filter;
@@ -30,7 +34,7 @@ public class BrowseRecipesFragment extends BasicFragment<BrowseRecipesViewModel>
         recyclerView.setHasFixedSize(true);
 
         viewModel = ViewModelProviders.of(this).get(BrowseRecipesViewModel.class);
-        adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), false);
+        adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), false, getActivity());
         recyclerView.setAdapter(adapter);
 
         adapter.setRecipes(viewModel.getFilteredRecipes(""));
@@ -59,6 +63,15 @@ public class BrowseRecipesFragment extends BasicFragment<BrowseRecipesViewModel>
 
     private void filterRecipes() {
         adapter.setRecipes(viewModel.getFilteredRecipes(filter));
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == REQUEST_EDIT_RECIPE && resultCode == RESULT_OK) {
+            filterRecipes();
+        }
     }
 }
 
