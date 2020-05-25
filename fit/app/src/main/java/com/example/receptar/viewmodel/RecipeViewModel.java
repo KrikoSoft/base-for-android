@@ -24,6 +24,10 @@ public class RecipeViewModel extends BasicViewModel<Recipe, RecipeRepository> {
         return recipe.getTitle() + " od " + userName;
     }
 
+    public boolean isUserRecipe(int recipeId) {
+        return repository.getRecipeById(recipeId).getUserId() == LoginData.getLoggedUserId();
+    }
+
     public String getRecipeTitle(int recipeId) {
         return repository.getRecipeById(recipeId).getTitle();
     }

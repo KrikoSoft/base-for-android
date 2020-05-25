@@ -60,6 +60,11 @@ public class InsideActivity extends AppCompatActivity implements NavigationView.
         switch (menuItem.getItemId()) {
             case R.id.nav_user_recipes:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserRecipesFragment()).commit();
+                setTitle(R.string.user_recipes);
+                break;
+            case R.id.nav_browse_recipes:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BrowseRecipesFragment()).commit();
+                setTitle(R.string.browse_recipes);
                 break;
         }
 

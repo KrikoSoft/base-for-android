@@ -16,6 +16,9 @@ public interface RecipeDao extends BasicDao<Recipe> {
     @Query("SELECT * FROM recipes WHERE userId = :userId AND title LIKE :content ORDER BY id")
     List<Recipe> getFilteredUserRecipes(int userId, String content);
 
+    @Query("SELECT * FROM recipes WHERE title LIKE :content ORDER BY id")
+    List<Recipe> getFilteredRecipes(String content);
+
     @Query("SELECT * FROM recipes  WHERE id = :recipeId")
     Recipe getRecipe(int recipeId);
 

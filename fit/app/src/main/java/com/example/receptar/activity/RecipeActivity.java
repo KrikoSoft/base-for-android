@@ -32,6 +32,7 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
     private int recipeId;
 
     private EditText commentBody;
+    private boolean allowEdit;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +74,8 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
         ((TextView) findViewById(R.id.text_view_recipe_title)).setText(viewModel.getRecipeTitle(recipeId));
         ((TextView) findViewById(R.id.text_view_recipe_author)).setText(viewModel.getRecipeAuthor(recipeId));
 
+        allowEdit = viewModel.isUserRecipe(recipeId);
+
         TextView recipeTextView = findViewById(R.id.text_view_recipe_text);
         recipeTextView.setText(viewModel.getRecipeText(recipeId));
     }
@@ -81,6 +84,8 @@ public class RecipeActivity extends BasicActivity<RecipeViewModel> {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.recipe_menu, menu);
+        menu.findItem(R.id.edit_recipe).setVisible(allowEdit);
+        menu.findItem(R.id.delete_recipe).setVisible(allowEdit);
         return true;
     }
 
