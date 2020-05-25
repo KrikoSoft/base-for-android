@@ -9,6 +9,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
         android:padding="8dp">
 
         <TextView
@@ -16,15 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:paddingStart="14dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="14dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/text_view_comment_author"
+            android:background="#000000"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
 
         <TextView
             android:id="@+id/text_view_comment_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_view_comment_author"
+            android:layout_below="@+id/line1"
             android:layout_alignParentStart="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="14dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

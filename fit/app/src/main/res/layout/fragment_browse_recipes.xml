@@ -8,6 +8,8 @@
         android:id="@+id/edit_text_browse_recipe_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:autofillHints=""
         android:hint="@string/recipe_name"
         android:inputType="text" />
@@ -17,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/edit_text_browse_recipe_filter"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         tools:listitem="@layout/recipe_item" />
 
 </RelativeLayout>
