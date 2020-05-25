@@ -37,10 +37,10 @@ public class UserRecipesFragment extends BasicFragment<UserRecipesViewModel> {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        adapter = new RecipeAdapter(getContext());
+        viewModel = ViewModelProviders.of(this).get(UserRecipesViewModel.class);
+        adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), true);
         recyclerView.setAdapter(adapter);
 
-        viewModel = ViewModelProviders.of(this).get(UserRecipesViewModel.class);
         adapter.setRecipes(viewModel.getFilteredRecipes(""));
         EditText editText = view.findViewById(R.id.edit_text_recipe_filter);
         editText.addTextChangedListener(new TextWatcher() {

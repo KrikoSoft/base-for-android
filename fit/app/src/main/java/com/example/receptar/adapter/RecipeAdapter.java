@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.receptar.R;
 import com.example.receptar.activity.RecipeActivity;
 import com.example.receptar.java.Recipe;
+import com.example.receptar.repository.RecipeRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +24,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHold
 
     private List<Recipe> recipes = new ArrayList<>();
     private Context context;
+    private RecipeRepository repository;
+    private boolean userRecipes;
 
-    public RecipeAdapter(Context context) {
+    public RecipeAdapter(Context context, RecipeRepository repository, boolean userRecipes) {
         super();
         this.context = context;
+        this.repository = repository;
+        this.userRecipes = userRecipes;
     }
 
     @NonNull
@@ -39,7 +44,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeHold
     @Override
     public void onBindViewHolder(@NonNull RecipeHolder holder, int position) {
         Recipe current = recipes.get(position);
-        holder.textViewRecipeTitle.setText(current.getTitle());
+        holder.textViewRecipeTitle.setText(String.format("%s%s", current.getTitle(), userRecipes ? "" : " od " + repository.getRecipeAuthor(current.getUserId())));
         holder.recipeId = current.getId();
     }
 

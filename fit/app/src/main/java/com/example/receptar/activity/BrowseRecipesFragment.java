@@ -29,10 +29,10 @@ public class BrowseRecipesFragment extends BasicFragment<BrowseRecipesViewModel>
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        adapter = new RecipeAdapter(getContext());
+        viewModel = ViewModelProviders.of(this).get(BrowseRecipesViewModel.class);
+        adapter = new RecipeAdapter(getContext(), viewModel.getRepository(), false);
         recyclerView.setAdapter(adapter);
 
-        viewModel = ViewModelProviders.of(this).get(BrowseRecipesViewModel.class);
         adapter.setRecipes(viewModel.getFilteredRecipes(""));
         EditText editText = view.findViewById(R.id.edit_text_browse_recipe_filter);
         editText.addTextChangedListener(new TextWatcher() {

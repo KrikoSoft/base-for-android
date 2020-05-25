@@ -7,13 +7,16 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.receptar.repository.BasicRepository;
 
+import lombok.Getter;
+
 /**
  * @param <T>  objects in repository
  * @param <BR> repository of objects
  */
 public class BasicViewModel<T, BR extends BasicRepository<T>> extends AndroidViewModel {
 
-    BR repository;
+    @Getter
+    protected BR repository;
 
     protected BasicViewModel(@NonNull Application application, BR repository) {
         super(application);
